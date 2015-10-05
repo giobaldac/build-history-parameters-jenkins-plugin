@@ -35,15 +35,19 @@ public class BuildHistoryParametersBuildAction extends InvisibleAction {
                     List<ParameterValue> params = parametersAction.getParameters();
                     String newDescription = "";
                     String newDisplayName = "";
+                    int i = 0;
                     for (ParameterValue currParam: params) {
-                        if (newDisplayName.length() == 0) {
-                            newDisplayName = currParam.getValue().toString();
+                        if (i == 0) {
+                            String currParamName = currParam.getName();
+                            if (!currParamName.contains("VERSION")) {
+                                newDisplayName = currParam.getValue().toString();
+                            }
                         }
                         else {
                             newDescription += " ";
                         }
-                        
                         newDescription += currParam.getName()+"="+currParam.getValue();
+                        i++;
                     }
                     if (newDescription.length() > 0)
                         r.setDescription(newDescription);
