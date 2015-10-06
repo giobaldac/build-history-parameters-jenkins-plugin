@@ -39,7 +39,7 @@ public class BuildHistoryParametersBuildAction extends InvisibleAction {
                     for (ParameterValue currParam: params) {
                         if (i == 0) {
                             String currParamName = currParam.getName();
-                            if (!currParamName.contains("VERSION")) {
+                            if (currParamName.contains("VERSION")) {
                                 newDisplayName = currParam.getValue().toString();
                             }
                         }
